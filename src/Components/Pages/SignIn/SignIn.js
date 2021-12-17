@@ -8,14 +8,19 @@ import PersonIcon from '@mui/icons-material/Person';
 import LockIcon from '@mui/icons-material/Lock';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 import useAuth from '../../../firebase/useAuth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const SignIn = () => {
     const [registerData, setRegisterData] = useState();
     const [isRegister, setIsRegister] = useState(false);
     const [retypePassError, setRetypePassError] = useState(false);
-    const { signInWithGoogle, registerWithEmailPassword, loading, error } = useAuth();
+    const { signInWithGoogle, logInWithEmailPassword, registerWithEmailPassword, loading, error } = useAuth();
     const navigate = useNavigate();
+    const [alert, serAlert] = useState(false);
+    const location = useLocation();
+    const redirect_url = location.state?.from || '/';
+
+
     const toggleLoginAndOut = even => {
         setIsRegister(even.target.checked);
     }
@@ -26,7 +31,7 @@ const SignIn = () => {
         newRegisterData[field] = value;
         setRegisterData(newRegisterData);
     }
-    const handleRegistration = () => {
+    const handleRegistration = (e) => {
         if (registerData.password !== registerData.rePassword) {
             setRetypePassError(true)
             return;
@@ -34,7 +39,35 @@ const SignIn = () => {
         else {
             registerWithEmailPassword(registerData.email, registerData.password, registerData.name, navigate)
         }
+        e.preventDefault()
     }
+    //redirect user with google
+    const handleGoogleLogin = () => {
+        signInWithGoogle()
+            .then(result => {
+                navigate(redirect_url);
+            })
+    }
+
+    const handleLogInWithEmailPass = (e) => {
+        logInWithEmailPass(registerData.email, registerData.password);
+        e.preventDefault()
+    }
+    //redirect user with google
+    const logInWithEmailPass = (email, password) => {
+        logInWithEmailPassword(email, password)
+            .then(result => {
+                if (error) {
+                    serAlert(true);
+                    return;
+                }
+                else {
+                    navigate(redirect_url);
+                }
+            })
+    }
+
+
     return (
         <div className="signIn">
             <div className="screen">
@@ -77,7 +110,10 @@ const SignIn = () => {
                                         </button>
                                     </form>
                                     :
-                                    <form className="login">
+                                    <form className="login" onSubmit={handleLogInWithEmailPass}>
+                                        {alert &&
+                                            <Alert severity="error">Username Or Password is Not Correct..!!</Alert>
+                                        }
                                         <div className="login__field">
                                             <span className="login__icon"><PersonIcon /></span>
                                             <input onBlur={handleOnBlur} name="email" type="text" className="login__input" placeholder="Email" />
@@ -97,7 +133,7 @@ const SignIn = () => {
                     <div className="social-login">
                         <h3>log in via</h3>
                         <div className="social-icons">
-                            <span className="social-login__icon" onClick={signInWithGoogle}><GoogleIcon /></span>
+                            <span className="social-login__icon" onClick={handleGoogleLogin}><GoogleIcon /></span>
                             <span className="social-login__icon"><GitHubIcon /></span>
                             <span className="social-login__icon"><FacebookIcon /></span>
                         </div>
