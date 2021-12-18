@@ -7,8 +7,8 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import PersonIcon from '@mui/icons-material/Person';
 import LockIcon from '@mui/icons-material/Lock';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
-import useAuth from '../../../firebase/useAuth';
 import { useNavigate, useLocation } from 'react-router-dom';
+import useAuth from '../../../Hooks/useAuth';
 
 const SignIn = () => {
     const [registerData, setRegisterData] = useState();
@@ -90,19 +90,19 @@ const SignIn = () => {
                                         }
                                         <div className="login__field">
                                             <span className="login__icon"><PersonIcon /></span>
-                                            <input onBlur={handleOnBlur} name="name" type="text" className="login__input" placeholder="Name" />
+                                            <input required onBlur={handleOnBlur} name="name" type="text" className="login__input" placeholder="Name" />
                                         </div>
                                         <div className="login__field">
                                             <span className="login__icon"><PersonIcon /></span>
-                                            <input onBlur={handleOnBlur} name="email" type="text" className="login__input" placeholder="Email" />
+                                            <input required onBlur={handleOnBlur} name="email" type="text" className="login__input" placeholder="Email" />
                                         </div>
                                         <div className="login__field">
                                             <span className="login__icon"><LockIcon /></span>
-                                            <input onBlur={handleOnBlur} name="password" type="password" className="login__input" placeholder="Password" />
+                                            <input required onBlur={handleOnBlur} name="password" type="password" className="login__input" placeholder="Password" />
                                         </div>
                                         <div className="login__field">
                                             <span className="login__icon"><LockIcon /></span>
-                                            <input onBlur={handleOnBlur} name="rePassword" type="password" className="login__input" placeholder="Re_type Password" />
+                                            <input required onBlur={handleOnBlur} name="rePassword" type="password" className="login__input" placeholder="Re_type Password" />
                                         </div>
 
                                         <button className="button login__submit">
@@ -116,11 +116,11 @@ const SignIn = () => {
                                         }
                                         <div className="login__field">
                                             <span className="login__icon"><PersonIcon /></span>
-                                            <input onBlur={handleOnBlur} name="email" type="text" className="login__input" placeholder="Email" />
+                                            <input required onBlur={handleOnBlur} name="email" type="text" className="login__input" placeholder="Email" />
                                         </div>
                                         <div className="login__field">
                                             <span className="login__icon"><LockIcon /></span>
-                                            <input onBlur={handleOnBlur} name="password" type="password" className="login__input" placeholder="Password" />
+                                            <input required onBlur={handleOnBlur} name="password" type="password" className="login__input" placeholder="Password" />
                                         </div>
                                         <button className="button login__submit">
                                             <span className="button__text">Log In Now</span><DoubleArrowIcon />
@@ -138,7 +138,7 @@ const SignIn = () => {
                             <span className="social-login__icon"><FacebookIcon /></span>
                         </div>
                         <div className="form-check">
-                            <input onChange={toggleLoginAndOut} type="checkbox" className="form-check-input" id="exampleCheck1" />
+                            <input required onChange={toggleLoginAndOut} type="checkbox" className="form-check-input" id="exampleCheck1" />
                             <label className="form-check-label" htmlFor="exampleCheck1">Create account?</label>
                         </div>
                     </div>

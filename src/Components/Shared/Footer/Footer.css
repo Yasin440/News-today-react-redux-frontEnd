@@ -1,0 +1,20 @@
+.footer{
+    background-color: rgba(46, 46, 46, 0.89);
+    border-top: 3px solid #1e88e5;
+}
+.footer .copy span{
+    color: #1e88e5;
+}
+.downFooter p{
+    margin: 0 9px;
+    cursor: pointer;
+}
+.downFooter .social p{
+    font-size: 25px;
+    color: #1e88e5;
+    transition: .5s all;
+    padding: 5px;
+}
+.downFooter .social p:hover{
+    color: whitesmoke;
+}

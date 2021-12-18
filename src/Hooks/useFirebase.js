@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import initializeFirebase from "./firebase.init";
-import { createUserWithEmailAndPassword, signOut, onAuthStateChanged, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile, getIdToken, getAuth } from "firebase/auth";
+import initializeFirebase from "../Components/Pages/Login/Firebase/firebase.init";
+import { getAuth, createUserWithEmailAndPassword, signOut, onAuthStateChanged, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile, getIdToken } from "firebase/auth";
 
 //initialize firebase app
 initializeFirebase();
@@ -8,13 +8,18 @@ initializeFirebase();
 const useFirebase = () => {
     const auth = getAuth();
     const [user, setUser] = useState({});
+    const [cars, setCars] = useState();
     const [error, setError] = useState();
     const [loading, setLoading] = useState(true);
+    const [admin, setAdmin] = useState(false);
+    const [jwtToken, setJwtToken] = useState('');
+    const [manageAllOrders, setManageAllOrders] = useState();
+    const [manageMyOrders, setManageMyOrders] = useState();
 
 
 
     //registerWithEmailPassword
-    const registerWithEmailPassword = (email, password, name, navigate) => {
+    const registerWithEmailPassword = (email, password, name, history) => {
         setError('');
         setLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
@@ -33,7 +38,7 @@ const useFirebase = () => {
                     .catch((error) => {
                         setError(error.message);
                     });
-                navigate('/', { replace: true })
+                history.replace('/');
             })
             .catch((error) => {
                 setError(error.message);
@@ -87,7 +92,7 @@ const useFirebase = () => {
                 setUser(user);
                 getIdToken(user)
                     .then(idToken => {
-
+                        setJwtToken(idToken);
                     })
             }
             else {
@@ -117,7 +122,7 @@ const useFirebase = () => {
     //***/== save user info to database ==/***//
     const saveUserDB = (email, displayName, method) => {
         const user = { email, displayName };
-        fetch('http://localhost:5000/users', {
+        fetch('https://nameless-river-31605.herokuapp.com/clients', {
             method: method,
             headers: {
                 'content-type': 'application/json'
@@ -126,15 +131,53 @@ const useFirebase = () => {
         })
     }
 
+    //== get admin validation in true of false ==//
+    useEffect(() => {
+        fetch(`https://nameless-river-31605.herokuapp.com/client/isAdmin/${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setAdmin(data.admin);
+            })
+    }, [user.email])
+
+    //== get all cars ==//
+    useEffect(() => {
+        fetch('https://nameless-river-31605.herokuapp.com/cars/all')
+            .then(res => res.json())
+            .then(data => setCars(data))
+    }, [])
+
+
+    //get all order info from database
+    useEffect(() => {
+        fetch('https://nameless-river-31605.herokuapp.com/orderedCars/all')
+            .then(res => res.json())
+            .then(data => setManageAllOrders(data))
+    }, [])
+
+    //get my order info from database with email
+    useEffect(() => {
+        fetch(`https://nameless-river-31605.herokuapp.com/orderedCars/${user?.email}`)
+            .then(res => res.json())
+            .then(data => setManageMyOrders(data))
+    }, [user.email])
 
     return {
         user,
+        cars,
+        setCars,
+        admin,
         error,
         loading,
+        jwtToken,
+        manageMyOrders,
+        setManageMyOrders,
+        manageAllOrders,
+        setManageAllOrders,
         registerWithEmailPassword,
         logInWithEmailPassword,
         signInWithGoogle,
-        logOut,
+        logOut
     }
 }
 
