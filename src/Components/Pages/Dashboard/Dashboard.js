@@ -12,7 +12,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import useAuth from '../../../Hooks/useAuth';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { ListItem, ListItemButton, ListItemText } from '@mui/material';
 
 const drawerWidth = 200;
@@ -40,7 +40,7 @@ const Dashboard = (props) => {
             </List>
             <Divider />
             <List>
-                <NavLink to='/home' style={{ textDecoration: 'none' }}>
+                <Link to='/home' style={{ textDecoration: 'none' }}>
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
@@ -49,62 +49,62 @@ const Dashboard = (props) => {
                             <ListItemText primary="Home" />
                         </ListItemButton>
                     </ListItem>
-                </NavLink>
-                <NavLink to='/' style={{ textDecoration: 'none' }}>
+                </Link>
+                <Link to='/dashboard/my_order' style={{ textDecoration: 'none' }}>
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemText primary="My Order" />
                         </ListItemButton>
                     </ListItem>
-                </NavLink>
+                </Link>
                 {admin &&
                     <>
-                        <NavLink to='/add_admin' style={{ textDecoration: 'none' }}>
+                        <Link to='/dashboard/add_admin' style={{ textDecoration: 'none' }}>
                             <ListItem disablePadding>
                                 <ListItemButton>
                                     <ListItemText primary="Add Admin" />
                                 </ListItemButton>
                             </ListItem>
-                        </NavLink>
-                        <NavLink to='/manage_all_order' style={{ textDecoration: 'none' }}>
+                        </Link>
+                        <Link to='/dashboard/manage_all_order' style={{ textDecoration: 'none' }}>
                             <ListItem disablePadding>
                                 <ListItemButton>
                                     <ListItemText primary="Manage All Order" />
                                 </ListItemButton>
                             </ListItem>
-                        </NavLink>
-                        <NavLink to='/manage_all_cars' style={{ textDecoration: 'none' }}>
+                        </Link>
+                        <Link to='/dashboard/manage_all_cars' style={{ textDecoration: 'none' }}>
                             <ListItem disablePadding>
                                 <ListItemButton>
                                     <ListItemText primary="Manage All Cars" />
                                 </ListItemButton>
                             </ListItem>
-                        </NavLink>
-                        <NavLink to='/dashboard_add_car' style={{ textDecoration: 'none' }}>
+                        </Link>
+                        <Link to='/dashboard/dashboard_add_car' style={{ textDecoration: 'none' }}>
                             <ListItem disablePadding>
                                 <ListItemButton>
                                     <ListItemText primary="Add Car" />
                                 </ListItemButton>
                             </ListItem>
-                        </NavLink>
+                        </Link>
                     </>
                 }
 
-                <NavLink to='/dashboard_review' style={{ textDecoration: 'none' }}>
+                <Link to='/dashboard/dashboard_review' style={{ textDecoration: 'none' }}>
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemText primary="Review" />
                         </ListItemButton>
                     </ListItem>
-                </NavLink>
-                <NavLink to='/home' style={{ textDecoration: 'none' }}>
+                </Link>
+                <Link to='/home' style={{ textDecoration: 'none' }}>
                     <ListItem disablePadding>
                         <ListItemButton onClick={logOut}>
                             <i className="fas fa-sign-out-alt me-1" style={{ color: '#F71943', fontSize: '1.2rem' }}></i>
                             <ListItemText primary="LogOut" />
                         </ListItemButton>
                     </ListItem>
-                </NavLink>
+                </Link>
             </List>
         </div>
     );

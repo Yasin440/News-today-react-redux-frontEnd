@@ -34,11 +34,12 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/home' element={<Dashboard />} />
+            <Route index element={<Home />} />
+            <Route path='/home' element={<Home />} />
             <Route path='/explore_all_cars' element={<ExploreCars />} />
-            <Route path='/dashboard' clement={<Dashboard />}>
-              <Route path='' element={<MyOrder />} />
+            <Route path='/dashboard' element={<Dashboard />}>
+              <Route index element={<MyOrder />} />
+              <Route to='my_order' element={<MyOrder />} />
               <Route path='dashboard_review' element={<AddReview />} />
               {/* {!admin ?
                 <div style={{ textAlign: 'center' }}>
@@ -46,10 +47,10 @@ function App() {
                 </div>
                 :
                 <> */}
-              <Route path={'dashboard_add_car'} element={<PrivateAdminRoute><AddCar /></PrivateAdminRoute>} />
-              <Route path={'add_admin'} element={<PrivateAdminRoute><AddAdmin /></PrivateAdminRoute>} />
-              <Route path={'manage_all_order'} element={<PrivateAdminRoute><ManageAllOrders /></PrivateAdminRoute>} />
-              <Route path={'manage_all_cars'} element={<PrivateAdminRoute><ManageAllCars /></PrivateAdminRoute>} />
+              <Route path='dashboard_add_car' element={<PrivateAdminRoute><AddCar /></PrivateAdminRoute>} />
+              <Route path='add_admin' element={<PrivateAdminRoute><AddAdmin /></PrivateAdminRoute>} />
+              <Route path='manage_all_order' element={<PrivateAdminRoute><ManageAllOrders /></PrivateAdminRoute>} />
+              <Route path='manage_all_cars' element={<PrivateAdminRoute><ManageAllCars /></PrivateAdminRoute>} />
               {/* </>
               } */}
             </Route>
