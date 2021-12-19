@@ -10,10 +10,10 @@ import List from '@mui/material/List';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import useAuth from '../../../Hooks/useAuth';
 import { Link, Outlet } from 'react-router-dom';
 import { ListItem, ListItemButton, ListItemText } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
 
 const drawerWidth = 200;
 
@@ -44,10 +44,7 @@ const Dashboard = (props) => {
                 <Link to='/home' style={{ textDecoration: 'none' }}>
                     <ListItem disablePadding>
                         <ListItemButton>
-                            <ListItemIcon>
-                                <i className="fas fa-home" style={{ color: '#1e88e5', fontSize: '1.2rem' }}></i>
-                            </ListItemIcon>
-                            <ListItemText primary="Home" />
+                            <ListItemText primary={<HomeIcon />} />
                         </ListItemButton>
                     </ListItem>
                 </Link>
@@ -133,7 +130,7 @@ const Dashboard = (props) => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Dashboard
+                        My Profile -({user?.displayName || user?.email})-
                     </Typography>
                 </Toolbar>
             </AppBar>

@@ -7,7 +7,6 @@ import ButtonBase from '@mui/material/ButtonBase';
 import { useParams } from 'react-router-dom';
 import { Button, CircularProgress, Container } from '@mui/material';
 import OrderModal from './OrderModal/OrderModal';
-import Header from '../../Shared/Header/Header';
 
 const Img = styled('img')({
     margin: 'auto',
@@ -16,22 +15,21 @@ const Img = styled('img')({
     maxHeight: '100%',
 });
 
-const DetailsOfCar = () => {
+const DetailsOfNews = () => {
     //modal=====
     const [openModal, setOpeModal] = React.useState(false);
     const handleOpen = () => setOpeModal(true);
     const handleClose = () => setOpeModal(false);
     //======
     const { detailId } = useParams();
-    const [carDetails, setCatDetails] = useState();
+    const [newsDetails, setNewsDetails] = useState();
     useEffect(() => {
-        fetch(`https://nameless-river-31605.herokuapp.com/carDetails/${detailId}`)
+        fetch(`http://localhost:5000/newsDetails/${detailId}`)
             .then(res => res.json())
-            .then(data => setCatDetails(data))
+            .then(data => setNewsDetails(data))
     }, [detailId])
     return (
         <div>
-            <Header></Header>
             <div
                 data-aos="zoom-in"
                 style={{
@@ -49,7 +47,7 @@ const DetailsOfCar = () => {
                 }}>GET LEARN IN DETAILS</p>
                 <h2>and ONE CLICK TO GET THIS CAR</h2>
             </div>
-            {!carDetails ?
+            {!newsDetails ?
                 <div style={{ textAlign: 'center' }}>
                     <CircularProgress sx={{ my: 3 }} />
                 </div>
@@ -58,20 +56,26 @@ const DetailsOfCar = () => {
                     <Grid container spacing={2}>
                         <Grid item>
                             <ButtonBase sx={{ width: 348, height: 260 }}>
-                                <Img alt="img" src={carDetails.picture} />
+                                <Img alt="img" src={newsDetails.picture} />
                             </ButtonBase>
                         </Grid>
                         <Grid item xs={12} sm container>
                             <Grid item xs container direction="column" spacing={5}>
                                 <Grid item xs>
                                     <Typography variant="h5" component="div">
-                                        {carDetails.name}
+                                        {newsDetails.name}
                                     </Typography>
                                     <Typography style={{ fontWeight: 'bold' }} variant="subtitle2." color="text.secondary">
-                                        Price: $ {carDetails.price}
+                                        Category:{newsDetails.category}
+                                    </Typography><br />
+                                    <Typography style={{ fontWeight: 'bold' }} variant="subtitle2." color="text.secondary">
+                                        Publish On:{newsDetails.date}
+                                    </Typography><br />
+                                    <Typography style={{ fontWeight: 'bold' }} variant="subtitle2." color="text.secondary">
+                                        Publish By:{newsDetails.by}
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary">
-                                        {carDetails.details}
+                                        {newsDetails.details}
                                     </Typography>
                                 </Grid>
                                 <Grid item>
@@ -83,7 +87,7 @@ const DetailsOfCar = () => {
                 </Container>
             }
             <OrderModal
-                carDetails={carDetails}
+                carDetails={newsDetails}
                 openModal={openModal}
                 handleClose={handleClose}
             ></OrderModal>
@@ -92,4 +96,4 @@ const DetailsOfCar = () => {
     );
 };
 
-export default DetailsOfCar;
+export default DetailsOfNews;

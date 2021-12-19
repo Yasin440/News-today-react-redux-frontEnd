@@ -6,11 +6,12 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const NewsCard = ({ news }) => {
     return (
         <Grid item xs={4} sm={4} md={4}>
-            <Card sx={{ maxWidth: 345 }} data-aos="flip-right">
+            <Card sx={{ maxWidth: 345, cursor: 'pointer' }} data-aos="flip-right">
                 <CardMedia
                     component="img"
                     alt="green iguana"
@@ -26,7 +27,8 @@ const NewsCard = ({ news }) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Link to={`/carDetails/${news._id}`}><Button sx={{ fontWeight: 'bold' }} variant="outlined">Buy Now</Button></Link>
+                    <Link style={{ textDecoration: 'none' }} to={`/newsDetails/${news._id}`}><Button sx={{ fontWeight: 'bold' }} variant="outlined"><VisibilityIcon sx={{ marginRight: '8px' }} /> View</Button>
+                    </Link>
                 </CardActions>
             </Card>
         </Grid>

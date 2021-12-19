@@ -6,3 +6,21 @@
 	padding: 0;	
 	font-family: Raleway, sans-serif;
 }
+.MuiButton-root{
+	background: linear-gradient(90deg, #4C489D, #7E7BB9);
+	color: #fff !important;
+}
+.title{
+	text-align: center;
+    font-weight: bold;
+    background: linear-gradient(90deg, #7E7BB9, #4C489D);
+    width: fit-content;
+    border-radius: 2rem;
+    padding: 15px 50px;
+    color: #fff;
+    margin: 8rem auto;
+}
+.css-1a7a1ce-MuiPaper-root-MuiAppBar-root{
+	background: linear-gradient(90deg, #4C489D, #7E7BB9);
+	align-items: center;
+}

@@ -11,22 +11,8 @@ const News = () => {
     }, [news])
     return (
         <Container sx={{ marginBottom: '5rem' }}>
-            <div
-                data-aos="zoom-in"
-                style={{
-                    width: 'fit-content',
-                    margin: '4rem auto',
-                    textAlign: 'center',
-                    padding: '0 2rem',
-                    borderLeft: '4px solid #1e88e5',
-                    borderRight: '4px solid #1e88e5'
-                }}>
-                <p style={{
-                    backgroundColor: '#1e88e5',
-                    color: 'white',
-                    fontWeight: 'bold'
-                }}>ONE CLICK AWAY TO GET THIS BEAUTY</p>
-                <h2>THE WORLD OF AUTOS</h2>
+            <div data-aos="zoom-in">
+                <h2 className="title">LATEST NEWS ON EARTH</h2>
             </div>
             {!news ?
                 <div style={{ textAlign: 'center' }}>

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Dashboard from './Components/Pages/Dashboard/Dashboard';
-import DetailsOfCar from './Components/Pages/DetailsOfCar/DetailsOfCar';
+import DetailsOfNews from './Components/Pages/DetailsOfNews/DetailsOfNews';
 import ExploreCars from './Components/Pages/ExploreCars/ExploreCars';
 import Home from './Components/Pages/Home/Home/Home';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
@@ -43,7 +43,7 @@ function App() {
             <Route path='manage_all_order' element={<PrivateAdminRoute><ManageAllOrders /></PrivateAdminRoute>} />
             <Route path='manage_all_cars' element={<PrivateAdminRoute><ManageAllCars /></PrivateAdminRoute>} />
           </Route>
-          <Route path='/carDetails/:detailId' element={<PrivateRoute><DetailsOfCar /></PrivateRoute>} />
+          <Route path='/newsDetails/:detailId' element={<PrivateRoute><DetailsOfNews /></PrivateRoute>} />
           <Route path='/signIn' element={<SignIn />} />
         </Routes>
       </BrowserRouter>
