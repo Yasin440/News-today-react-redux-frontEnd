@@ -66,13 +66,13 @@ const DetailsOfNews = () => {
                                         {newsDetails.name}
                                     </Typography>
                                     <Typography style={{ fontWeight: 'bold' }} variant="subtitle2." color="text.secondary">
-                                        Category:{newsDetails.category}
+                                        Category: {newsDetails.category}
                                     </Typography><br />
                                     <Typography style={{ fontWeight: 'bold' }} variant="subtitle2." color="text.secondary">
-                                        Publish On:{newsDetails.date}
+                                        Publish On: {newsDetails.date}
                                     </Typography><br />
                                     <Typography style={{ fontWeight: 'bold' }} variant="subtitle2." color="text.secondary">
-                                        Publish By:{newsDetails.by}
+                                        Publish By: {newsDetails.by}
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary">
                                         {newsDetails.details}

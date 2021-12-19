@@ -26,22 +26,8 @@ const AddAdmin = () => {
     }
     return (
         <div>
-            <div
-                data-aos="zoom-in"
-                style={{
-                    width: 'fit-content',
-                    margin: '1rem auto 2rem auto',
-                    textAlign: 'center',
-                    padding: '0 2rem',
-                    borderLeft: '4px solid #1e88e5',
-                    borderRight: '4px solid #1e88e5'
-                }}>
-                <p style={{
-                    backgroundColor: '#1e88e5',
-                    color: 'white',
-                    fontWeight: 'bold'
-                }}>As An Admin</p>
-                <h3>YOU HAVE TO MAKE ANYONE ADMIN </h3>
+            <div data-aos="zoom-in">
+                <h2 className="title" style={{ marginTop: 0 }}>Add an admin</h2>
             </div>
             {adminSuccess &&
                 <Alert className='w-50 m-auto' severity="success">**{adminEmail}** Successfully Add as Admin</Alert>

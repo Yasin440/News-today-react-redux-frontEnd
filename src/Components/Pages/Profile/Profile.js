@@ -32,15 +32,6 @@ const Dashboard = (props) => {
             <Toolbar />
             <Divider />
             <List>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <i className="fas fa-user-circle me-1" style={{ color: '#1e88e5', fontSize: '1.2rem' }}></i>
-                        <ListItemText primary={user?.displayName} />
-                    </ListItemButton>
-                </ListItem>
-            </List>
-            <Divider />
-            <List>
                 <Link to='/home' style={{ textDecoration: 'none' }}>
                     <ListItem disablePadding>
                         <ListItemButton>
@@ -48,7 +39,7 @@ const Dashboard = (props) => {
                         </ListItemButton>
                     </ListItem>
                 </Link>
-                <Link to='/dashboard/my_order' style={{ textDecoration: 'none' }}>
+                <Link to='/profile/my_order' style={{ textDecoration: 'none' }}>
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemText primary="My Order" />
@@ -57,38 +48,38 @@ const Dashboard = (props) => {
                 </Link>
                 {admin &&
                     <>
-                        <Link to='/dashboard/add_admin' style={{ textDecoration: 'none' }}>
+                        <Link to='/profile/add_admin' style={{ textDecoration: 'none' }}>
                             <ListItem disablePadding>
                                 <ListItemButton>
                                     <ListItemText primary="Add Admin" />
                                 </ListItemButton>
                             </ListItem>
                         </Link>
-                        <Link to='/dashboard/manage_all_order' style={{ textDecoration: 'none' }}>
+                        <Link to='/profile/manage_all_order' style={{ textDecoration: 'none' }}>
                             <ListItem disablePadding>
                                 <ListItemButton>
                                     <ListItemText primary="Manage All Order" />
                                 </ListItemButton>
                             </ListItem>
                         </Link>
-                        <Link to='/dashboard/manage_all_cars' style={{ textDecoration: 'none' }}>
+                        <Link to='/profile/manage_all_cars' style={{ textDecoration: 'none' }}>
                             <ListItem disablePadding>
                                 <ListItemButton>
                                     <ListItemText primary="Manage All Cars" />
                                 </ListItemButton>
                             </ListItem>
                         </Link>
-                        <Link to='/dashboard/dashboard_add_car' style={{ textDecoration: 'none' }}>
+                        <Link to='/profile/addLatestNews' style={{ textDecoration: 'none' }}>
                             <ListItem disablePadding>
                                 <ListItemButton>
-                                    <ListItemText primary="Add Car" />
+                                    <ListItemText primary="Add Latest News" />
                                 </ListItemButton>
                             </ListItem>
                         </Link>
                     </>
                 }
 
-                <Link to='/dashboard/dashboard_review' style={{ textDecoration: 'none' }}>
+                <Link to='/profile/profile_makeReview' style={{ textDecoration: 'none' }}>
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemText primary="Review" />

@@ -20,9 +20,6 @@ const Header = () => {
                                 <NavLink to='/home'>Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to='/dashboard'>Dashboard</NavLink>
-                            </li>
-                            <li className="nav-item">
                                 <NavLink to=''>Covid-19</NavLink>
                             </li>
                             <li className="nav-item">
@@ -40,9 +37,11 @@ const Header = () => {
                             <li className="nav-item">
                                 <NavLink to=''>Sports</NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink to=''>Features</NavLink>
-                            </li>
+                            {user &&
+                                <li className="nav-item">
+                                    <NavLink to='/profile'>Profile</NavLink>
+                                </li>
+                            }
                         </ul>
                         <form className="d-flex">
                             <span className="userName">{user?.displayName}</span>
