@@ -122,7 +122,7 @@ const useFirebase = () => {
     //***/== save user info to database ==/***//
     const saveUserDB = (email, displayName, method) => {
         const user = { email, displayName };
-        fetch('http://localhost:5000/users', {
+        fetch('https://peaceful-river-87601.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'
@@ -133,7 +133,7 @@ const useFirebase = () => {
 
     //== get admin validation in true of false ==//
     useEffect(() => {
-        fetch(`http://localhost:5000/client/isAdmin/${user.email}`)
+        fetch(`https://peaceful-river-87601.herokuapp.com/client/isAdmin/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setAdmin(data.admin);

@@ -5,7 +5,7 @@ import NewsCard from './NewsCard/NewsCard';
 const News = () => {
     const [news, setNews] = useState();
     useEffect(() => {
-        fetch('http://localhost:5000/latestNews')
+        fetch('https://peaceful-river-87601.herokuapp.com/latestNews')
             .then(res => res.json())
             .then(data => setNews(data))
     }, [news])

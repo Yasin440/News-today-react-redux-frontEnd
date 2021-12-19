@@ -26,7 +26,7 @@ const AddNews = () => {
         formData.append('category', data.category);
         formData.append('details', data.details);
         formData.append('email', user.email);
-        fetch('http://localhost:5000/addNews', {
+        fetch('https://peaceful-river-87601.herokuapp.com/addNews', {
             method: 'POST',
             body: formData
         })

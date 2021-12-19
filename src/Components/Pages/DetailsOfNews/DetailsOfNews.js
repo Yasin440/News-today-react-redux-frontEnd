@@ -24,7 +24,7 @@ const DetailsOfNews = () => {
     const { detailId } = useParams();
     const [newsDetails, setNewsDetails] = useState();
     useEffect(() => {
-        fetch(`http://localhost:5000/newsDetails/${detailId}`)
+        fetch(`https://peaceful-river-87601.herokuapp.com/newsDetails/${detailId}`)
             .then(res => res.json())
             .then(data => setNewsDetails(data))
     }, [detailId])

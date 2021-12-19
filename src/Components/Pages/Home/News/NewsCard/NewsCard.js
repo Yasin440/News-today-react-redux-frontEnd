@@ -18,7 +18,7 @@ const NewsCard = ({ news }) => {
                     component="img"
                     alt="green iguana"
                     height="200"
-                    image={news.picture || `data:image/*;base64,${news.picture}`}
+                    image={news.picture || `data:image/*;base64,${news.picture2}`}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
