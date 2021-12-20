@@ -13,7 +13,6 @@ export const fetchLatestNews = createAsyncThunk(
       .then(res => res.json());
     // The value we return becomes the `fulfilled` action payload
     return response;
-
   }
 );
 export const fetchSingleNewsForDetails = createAsyncThunk(
@@ -21,7 +20,6 @@ export const fetchSingleNewsForDetails = createAsyncThunk(
   async (id) => {
     const response = await fetch(`https://peaceful-river-87601.herokuapp.com/newsDetails/${id}`)
       .then(res => res.json())
-    console.log(response);
     // The value we return becomes the `fulfilled` action payload
     return response;
 

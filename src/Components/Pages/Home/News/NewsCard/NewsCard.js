@@ -8,8 +8,12 @@ import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import SaveIcon from '@mui/icons-material/Save';
+import { addToReadLater } from '../../../../../features/Slice/newsSlice';
+import { useDispatch } from 'react-redux'
+
 
 const NewsCard = ({ news }) => {
+    const dispatch = useDispatch();
     return (
         <Grid item xs={4} sm={4} md={4}>
             <Card sx={{ maxWidth: 345, cursor: 'pointer' }} data-aos="flip-right">
@@ -35,7 +39,7 @@ const NewsCard = ({ news }) => {
                         style={{ textDecoration: 'none' }}
                         to={`/newsDetails/${news._id}`}><Button sx={{ fontWeight: 'bold' }} variant="outlined"><VisibilityIcon sx={{ marginRight: '8px' }} /> Read</Button>
                     </Link>
-                    <span className="read-later" title='Read later'><SaveIcon /></span>
+                    <span onClick={() => dispatch(addToReadLater(news))} className="read-later" title='Read later'><SaveIcon /></span>
                 </CardActions>
             </Card>
         </Grid>
