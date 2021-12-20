@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Footer from '../../Shared/Footer/Footer';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
@@ -7,6 +7,8 @@ import ButtonBase from '@mui/material/ButtonBase';
 import { useParams } from 'react-router-dom';
 import { Button, CircularProgress, Container } from '@mui/material';
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchSingleNewsForDetails } from '../../../features/Slice/newsSlice';
 
 const Img = styled('img')({
     margin: 'auto',
@@ -17,23 +19,28 @@ const Img = styled('img')({
 
 const DetailsOfNews = () => {
     const navigate = useNavigate();
-    //======
+    const dispatch = useDispatch();
     const { detailId } = useParams();
-    const [newsDetails, setNewsDetails] = useState();
+    const newsDetails = useSelector(state => state.news.singleNewsDetails);
     useEffect(() => {
-        fetch(`https://peaceful-river-87601.herokuapp.com/newsDetails/${detailId}`)
-            .then(res => res.json())
-            .then(data => setNewsDetails(data))
-    }, [detailId])
+        dispatch(fetchSingleNewsForDetails(detailId));
+    })
+    //======
+    // const [newsDetails, setNewsDetails] = useState();
+    // useEffect(() => {
+    //     fetch(`https://peaceful-river-87601.herokuapp.com/newsDetails/${detailId}`)
+    //         .then(res => res.json())
+    //         .then(data => setNewsDetails(data))
+    // }, [detailId])
     return (
         <div>
-            <h2 className="title">{newsDetails?.name.slice(0, 30)}...</h2>
             {!newsDetails ?
                 <div style={{ textAlign: 'center' }}>
                     <CircularProgress sx={{ my: 3 }} />
                 </div>
                 :
                 <Container>
+                    <h2 className="title">{newsDetails.name.slice(0, 30)}...</h2>
                     <Grid container spacing={2}>
                         <Grid item>
                             <ButtonBase sx={{ width: 348, height: 260 }}>

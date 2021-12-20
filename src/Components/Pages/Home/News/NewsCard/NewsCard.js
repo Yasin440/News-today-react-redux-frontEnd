@@ -31,7 +31,9 @@ const NewsCard = ({ news }) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Link style={{ textDecoration: 'none' }} to={`/newsDetails/${news._id}`}><Button sx={{ fontWeight: 'bold' }} variant="outlined"><VisibilityIcon sx={{ marginRight: '8px' }} /> Read</Button>
+                    <Link
+                        style={{ textDecoration: 'none' }}
+                        to={`/newsDetails/${news._id}`}><Button sx={{ fontWeight: 'bold' }} variant="outlined"><VisibilityIcon sx={{ marginRight: '8px' }} /> Read</Button>
                     </Link>
                     <span className="read-later" title='Read later'><SaveIcon /></span>
                 </CardActions>
