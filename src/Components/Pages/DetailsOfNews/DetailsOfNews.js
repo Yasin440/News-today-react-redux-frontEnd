@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
 import { useParams } from 'react-router-dom';
 import { Button, CircularProgress, Container } from '@mui/material';
-import OrderModal from './OrderModal/OrderModal';
+import { useNavigate } from "react-router-dom";
 
 const Img = styled('img')({
     margin: 'auto',
@@ -16,10 +16,7 @@ const Img = styled('img')({
 });
 
 const DetailsOfNews = () => {
-    //modal=====
-    const [openModal, setOpeModal] = React.useState(false);
-    const handleOpen = () => setOpeModal(true);
-    const handleClose = () => setOpeModal(false);
+    const navigate = useNavigate();
     //======
     const { detailId } = useParams();
     const [newsDetails, setNewsDetails] = useState();
@@ -30,23 +27,7 @@ const DetailsOfNews = () => {
     }, [detailId])
     return (
         <div>
-            <div
-                data-aos="zoom-in"
-                style={{
-                    width: 'fit-content',
-                    margin: '4rem auto',
-                    textAlign: 'center',
-                    padding: '0 2rem',
-                    borderLeft: '4px solid #1e88e5',
-                    borderRight: '4px solid #1e88e5'
-                }}>
-                <p style={{
-                    backgroundColor: '#1e88e5',
-                    color: 'white',
-                    fontWeight: 'bold'
-                }}>GET LEARN IN DETAILS</p>
-                <h2>and ONE CLICK TO GET THIS CAR</h2>
-            </div>
+            <h2 className="title">{newsDetails?.name.slice(0, 30)}...</h2>
             {!newsDetails ?
                 <div style={{ textAlign: 'center' }}>
                     <CircularProgress sx={{ my: 3 }} />
@@ -56,7 +37,7 @@ const DetailsOfNews = () => {
                     <Grid container spacing={2}>
                         <Grid item>
                             <ButtonBase sx={{ width: 348, height: 260 }}>
-                                <Img alt="img" src={newsDetails.picture} />
+                                <Img alt="img" src={newsDetails.picture || `data:image/*;base64,${newsDetails.picture2}`} />
                             </ButtonBase>
                         </Grid>
                         <Grid item xs={12} sm container>
@@ -79,18 +60,13 @@ const DetailsOfNews = () => {
                                     </Typography>
                                 </Grid>
                                 <Grid item>
-                                    <Button onClick={handleOpen} sx={{ fontWeight: 'bold' }} variant="outlined">Place Order</Button>
+                                    <Button onClick={() => navigate(-1)} sx={{ fontWeight: 'bold' }} variant="outlined">Go Back</Button>
                                 </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Container>
             }
-            <OrderModal
-                carDetails={newsDetails}
-                openModal={openModal}
-                handleClose={handleClose}
-            ></OrderModal>
             <Footer></Footer>
         </div>
     );

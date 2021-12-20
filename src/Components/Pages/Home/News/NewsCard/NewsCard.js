@@ -10,7 +10,6 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import SaveIcon from '@mui/icons-material/Save';
 
 const NewsCard = ({ news }) => {
-    console.log(news);
     return (
         <Grid item xs={4} sm={4} md={4}>
             <Card sx={{ maxWidth: 345, cursor: 'pointer' }} data-aos="flip-right">
