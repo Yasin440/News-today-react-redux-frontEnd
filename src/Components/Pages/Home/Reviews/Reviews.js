@@ -11,22 +11,8 @@ const Reviews = () => {
     }, [])
     return (
         <Container>
-            <div
-                data-aos="zoom-in"
-                style={{
-                    width: 'fit-content',
-                    margin: '4rem auto',
-                    textAlign: 'center',
-                    padding: '0 2rem',
-                    borderLeft: '4px solid #1e88e5',
-                    borderRight: '4px solid #1e88e5'
-                }}>
-                <p style={{
-                    backgroundColor: '#1e88e5',
-                    color: 'white',
-                    fontWeight: 'bold'
-                }}>Wall of Love</p>
-                <h3>Happy Clients Reviews</h3>
+            <div data-aos="zoom-in">
+                <h2 className="title">OUR HAPPY USER</h2>
             </div>
             {!reviews ?
                 <div style={{ textAlign: 'center' }}>

@@ -1,41 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CircularProgress, Container, Grid } from '@mui/material';
-import useAuth from '../../../../Hooks/useAuth';
-import ManageCarCard from './ManageCarCard/ManageCarCard';
+import ManageAllNewsCard from './ManageAllNewsCard/ManageAllNewsCard';
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchAllNews } from '../../../../features/Slice/newsSlice';
 
-const ManageAllCars = () => {
-    const { cars } = useAuth();
+const ManageAllNews = () => {
+    const dispatch = useDispatch();
+    const allNews = useSelector(state => state.news.allNews);
+    useEffect(() => {
+        dispatch(fetchAllNews());
+    }, [dispatch])
     return (
         <Container>
-            <div
-                data-aos="zoom-in"
-                style={{
-                    width: 'fit-content',
-                    margin: '1rem auto 3rem auto',
-                    textAlign: 'center',
-                    padding: '0 2rem',
-                    borderLeft: '4px solid #1e88e5',
-                    borderRight: '4px solid #1e88e5'
-                }}>
-                <p style={{
-                    backgroundColor: '#1e88e5',
-                    color: 'white',
-                    fontWeight: 'bold'
-                }}>As An Admin</p>
-                <h2>MANAGE ALL CARS</h2>
+            <div data-aos="zoom-in">
+                <h2 className="title" style={{ marginTop: 0 }}>Manage All News</h2>
             </div>
-            {!cars ?
+            {!allNews ?
                 <div style={{ textAlign: 'center' }}>
                     <CircularProgress sx={{ my: 3 }} />
                 </div>
                 :
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {
-                        cars?.map(car =>
-                            <ManageCarCard
-                                key={car._id}
-                                car={car}
-                            ></ManageCarCard>
+                        allNews?.map(news =>
+                            <ManageAllNewsCard
+                                key={news._id}
+                                news={news}
+                            ></ManageAllNewsCard>
                         )
                     }
                 </Grid>
@@ -44,4 +35,4 @@ const ManageAllCars = () => {
     );
 };
 
-export default ManageAllCars;
+export default ManageAllNews;

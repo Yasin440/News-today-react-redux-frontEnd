@@ -14,7 +14,7 @@ import AddReview from './Components/Pages/Profile/AddReview/AddReview';
 import PrivateAdminRoute from './PrivateRoute/PrivateAdminRoute';
 import AddNews from './Components/Pages/Profile/AddNews/AddNews';
 import AddAdmin from './Components/Pages/Profile/AddAdmin/AddAdmin';
-import ManageAllCars from './Components/Pages/Profile/ManageAllCars/ManageAllCars';
+import ManageAllNews from './Components/Pages/Profile/ManageAllNews/ManageAllNews';
 import Header from './Components/Shared/Header/Header';
 import NewsWithTopic from './Components/Pages/NewsWithTopic/NewsWithTopic';
 
@@ -40,7 +40,7 @@ function App() {
             <Route path='profile_makeReview' element={<AddReview />} />
             <Route path='addLatestNews' element={<PrivateAdminRoute><AddNews /></PrivateAdminRoute>} />
             <Route path='add_admin' element={<PrivateAdminRoute><AddAdmin /></PrivateAdminRoute>} />
-            <Route path='manage_all_news' element={<PrivateAdminRoute><ManageAllCars /></PrivateAdminRoute>} />
+            <Route path='manage_all_news' element={<PrivateAdminRoute><ManageAllNews /></PrivateAdminRoute>} />
           </Route>
           <Route path='/newsDetails/:detailId' element={<PrivateRoute><DetailsOfNews /></PrivateRoute>} />
           <Route path='/news/:topic' element={<NewsWithTopic />} />

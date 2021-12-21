@@ -8,19 +8,19 @@ import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
 import useAuth from '../../../../../Hooks/useAuth';
 
-const ManageAllNewsCard = ({ car }) => {
+const ManageAllNewsCard = ({ news }) => {
     const { cars, setCars } = useAuth()
     const handleDelete = () => {
         const confirm = window.confirm("Are You Sure To DELETE This CarsOrder..?");
         if (confirm) {
-            fetch(`https://nameless-river-31605.herokuapp.com/all_Cars/delete/${car._id}`, {
+            fetch(`https://nameless-river-31605.herokuapp.com/all_Cars/delete/${news._id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
                         alert("DELETE Successfully");
-                        const remain = cars.filter(data => data._id !== car._id);
+                        const remain = cars.filter(data => data._id !== news._id);
                         setCars(remain);
                     }
                 })
@@ -34,17 +34,17 @@ const ManageAllNewsCard = ({ car }) => {
                     component="img"
                     alt="green iguana"
                     height="200"
-                    image={car.picture}
+                    image={news.picture}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {car.name}
+                        {news.name}
                     </Typography>
                     <Typography sx={{ fontWeight: 'bold' }} variant="subtitle2" gutterBottom component="div">
-                        Price: ${car.price}
+                        Price: ${news.price || `data:image/*;base64,${news.picture2}`}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        {car.details.slice(0, 110)}
+                        {news.details.slice(0, 110)}
                     </Typography>
                 </CardContent>
                 <CardActions>
