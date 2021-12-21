@@ -6,9 +6,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
-import useAuth from '../../../../../Hooks/useAuth';
+import useAuth from '../../../../Hooks/useAuth';
 
-const ManageMyOrderCard = ({ manageOrders }) => {
+const ReadingListCard = ({ manageOrders }) => {
     const { manageMyOrders, setManageMyOrders } = useAuth()
     const { _id, name, email, status } = manageOrders;
     const { picture, price, details } = manageOrders.carDetails;
@@ -84,4 +84,4 @@ const ManageMyOrderCard = ({ manageOrders }) => {
     );
 };
 
-export default ManageMyOrderCard;
+export default ReadingListCard;

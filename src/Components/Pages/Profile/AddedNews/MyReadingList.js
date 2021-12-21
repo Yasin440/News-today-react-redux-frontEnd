@@ -2,10 +2,10 @@ import React from 'react';
 import { CircularProgress, Container, Grid } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
-import ManageMyOrderCard from './ManageMyOrderCard/ManageMyOrderCard';
 import useAuth from '../../../../Hooks/useAuth';
+import ReadingListCard from './ReadingListCard';
 
-const MyOrder = () => {
+const MyReadingList = () => {
     const { manageMyOrders } = useAuth();
 
     return (
@@ -29,10 +29,10 @@ const MyOrder = () => {
                             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 4, md: 12 }}>
                                 {
                                     manageMyOrders?.map(manageOrders =>
-                                        <ManageMyOrderCard
+                                        <ReadingListCard
                                             key={manageOrders._id}
                                             manageOrders={manageOrders}
-                                        ></ManageMyOrderCard>
+                                        ></ReadingListCard>
                                     )
                                 }
                             </Grid>
@@ -43,4 +43,4 @@ const MyOrder = () => {
     );
 };
 
-export default MyOrder;
+export default MyReadingList;

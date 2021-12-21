@@ -31,6 +31,12 @@ export const newsSlice = createSlice({
   initialState,
   reducers: {
     addToReadLater: (state, action) => {
+      if (state.readLater.length) {
+        if (state.readLater.find(news => news._id === action.payload._id)) {
+          alert('This News Already Added, Check Profile');
+          return;
+        }
+      }
       state.readLater.push(action.payload);
     },
     removeFromReadLater: (state, { payload }) => {

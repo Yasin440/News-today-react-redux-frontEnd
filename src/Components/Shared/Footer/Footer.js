@@ -1,5 +1,8 @@
 import React from 'react';
 import './Footer.css';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 const Footer = () => {
     return (
@@ -7,8 +10,7 @@ const Footer = () => {
             <div className="container text-light">
 
                 <div className="copy text-center">
-                    <img style={{ width: '15%' }} src="https://i.ibb.co/Wc690Sj/logo-removebg-preview.png" alt="logo" />
-                    <p className="mt-3">&copy;-<span>World Class Car</span>-Rights reserved by World-class-car</p>
+                    <p className="mt-3">&copy;-<span>React Redux-toolkit</span>-Rights reserved by Md Yasin Miah</p>
                 </div>
                 <div className='downFooter'>
                     <div className="row align-items-center">
@@ -18,9 +20,9 @@ const Footer = () => {
                             <p>Conditions</p>
                         </div>
                         <div className="col-md-6 d-flex justify-content-center social">
-                            <p><i className="fab fa-twitter"></i></p>
-                            <p><i className="fab fa-facebook"></i></p>
-                            <p><i className="fab fa-linkedin"></i></p>
+                            <FacebookIcon />
+                            <GitHubIcon sx={{ marginX: "2rem" }} />
+                            <LinkedInIcon />
                         </div>
                     </div>
                 </div>

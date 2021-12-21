@@ -55,17 +55,10 @@ const Dashboard = (props) => {
                                 </ListItemButton>
                             </ListItem>
                         </Link>
-                        <Link to='/profile/manage_all_order' style={{ textDecoration: 'none' }}>
+                        <Link to='/profile/manage_all_news' style={{ textDecoration: 'none' }}>
                             <ListItem disablePadding>
                                 <ListItemButton>
-                                    <ListItemText primary="Manage All Order" />
-                                </ListItemButton>
-                            </ListItem>
-                        </Link>
-                        <Link to='/profile/manage_all_cars' style={{ textDecoration: 'none' }}>
-                            <ListItem disablePadding>
-                                <ListItemButton>
-                                    <ListItemText primary="Manage All Cars" />
+                                    <ListItemText primary="Manage All News" />
                                 </ListItemButton>
                             </ListItem>
                         </Link>
