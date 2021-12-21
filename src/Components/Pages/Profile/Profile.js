@@ -17,7 +17,7 @@ import HomeIcon from '@mui/icons-material/Home';
 
 const drawerWidth = 200;
 
-const Dashboard = (props) => {
+const Profile = (props) => {
     const { user, logOut, admin } = useAuth();
     console.log(admin);
     const { window } = props;
@@ -161,7 +161,7 @@ const Dashboard = (props) => {
     );
 }
 
-Dashboard.propTypes = {
+Profile.propTypes = {
     /**
      * Injected by the documentation to work in an iframe.
      * You won't need it on your project.
@@ -169,4 +169,4 @@ Dashboard.propTypes = {
     window: PropTypes.func,
 };
 
-export default Dashboard;
+export default Profile;

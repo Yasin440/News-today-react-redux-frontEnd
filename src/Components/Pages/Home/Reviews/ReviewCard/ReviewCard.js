@@ -14,8 +14,8 @@ const ReviewCard = ({ review }) => {
                     component="img"
                     alt="green iguana"
                     height="200"
-                    sx={{ width: '75%', margin: 'auto' }}
-                    image="https://i.ibb.co/2PW79fv/user-Avatar.png"
+                    sx={{ width: '58%', margin: 'auto' }}
+                    image="https://i.ibb.co/Jr3zwv6/user-Profile.png"
                 />
                 <CardContent sx={{ textAlign: 'center' }}>
                     <Typography gutterBottom variant="h6" component="div">

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Dashboard from './Components/Pages/Profile/Profile';
+import Profile from './Components/Pages/Profile/Profile';
 import DetailsOfNews from './Components/Pages/DetailsOfNews/DetailsOfNews';
 import ExploreCars from './Components/Pages/ExploreCars/ExploreCars';
 import Home from './Components/Pages/Home/Home/Home';
@@ -34,7 +34,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='/home' element={<Home />} />
           <Route path='/explore_all_cars' element={<ExploreCars />} />
-          <Route path='/profile' element={<Dashboard />}>
+          <Route path='/profile' element={<Profile />}>
             <Route index element={<MyReadingList />} />
             <Route path='my_order' element={<MyReadingList />} />
             <Route path='profile_makeReview' element={<AddReview />} />

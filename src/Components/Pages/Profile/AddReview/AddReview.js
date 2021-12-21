@@ -81,7 +81,7 @@ const AddReview = () => {
                     </form>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <img data-aos="zoom-in" width='90%' src="https://i.ibb.co/D4pL7dt/review.jpg.png" alt="img" />
+                    <img data-aos="zoom-in" width='90%' src="https://i.ibb.co/F4vg4Rr/reviews.png" alt="img" />
                 </Grid>
             </Grid>
         </Container>

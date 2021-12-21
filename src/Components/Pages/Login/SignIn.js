@@ -24,6 +24,7 @@ const SignIn = () => {
     const toggleLoginAndOut = even => {
         setIsRegister(even.target.checked);
     }
+    //get data from input
     const handleOnBlur = (e) => {
         const field = e.target.name;
         const value = e.target.value;
@@ -31,6 +32,7 @@ const SignIn = () => {
         newRegisterData[field] = value;
         setRegisterData(newRegisterData);
     }
+    //registration with email and pass
     const handleRegistration = (e) => {
         if (registerData.password !== registerData.rePassword) {
             setRetypePassError(true)

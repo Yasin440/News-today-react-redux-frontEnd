@@ -34,14 +34,17 @@ const ManageAllNewsCard = ({ news }) => {
                     component="img"
                     alt="green iguana"
                     height="200"
-                    image={news.picture}
+                    image={news.picture || `data:image/*;base64,${news.picture2}`}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {news.name}
+                        {news.name.slice(0, 40)}...
                     </Typography>
-                    <Typography sx={{ fontWeight: 'bold' }} variant="subtitle2" gutterBottom component="div">
-                        Price: ${news.price || `data:image/*;base64,${news.picture2}`}
+                    <Typography variant="body2" color="blue">
+                        {news.category} || {news.date}
+                    </Typography>
+                    <Typography variant="body2" color="blue">
+                        {news.by}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                         {news.details.slice(0, 110)}

@@ -28,7 +28,10 @@ const NewsCard = ({ news }) => {
                         {news.name.slice(0, 40)}...
                     </Typography>
                     <Typography variant="body2" color="blue">
-                        {news.category}
+                        {news.category} || {news.date}
+                    </Typography>
+                    <Typography variant="body2" color="blue">
+                        {news.by}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                         {news.details.slice(0, 110)}...

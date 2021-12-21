@@ -6,6 +6,7 @@ import useAuth from '../../../Hooks/useAuth';
 
 const Header = () => {
     const { user, logOut } = useAuth();
+    console.log(user);
     return (
         <div className="header">
             <nav className="navbar navbar-expand-lg">
@@ -34,7 +35,7 @@ const Header = () => {
                             <li className="nav-item">
                                 <NavLink to='/news/Sports'>Sports</NavLink>
                             </li>
-                            {user &&
+                            {user.email &&
                                 <li className="nav-item">
                                     <NavLink to='/profile'>Profile</NavLink>
                                 </li>

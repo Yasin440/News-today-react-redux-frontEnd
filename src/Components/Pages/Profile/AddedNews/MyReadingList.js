@@ -22,8 +22,8 @@ const MyReadingList = () => {
                     {
                         manageMyOrders.length === 0 ?
                             <Alert severity="info">
-                                <AlertTitle>Please Reload after Order</AlertTitle>
-                                <strong>There is no Order to Show! </strong>
+                                <AlertTitle>Please Reload after Saved</AlertTitle>
+                                <strong>There is no Saves News to Show! </strong>
                             </Alert>
                             :
                             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 4, md: 12 }}>
