@@ -1,16 +1,19 @@
 import { CircularProgress, Container, Grid } from '@mui/material';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import NewsCard from '../Home/News/NewsCard/NewsCard';
 import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchNewsWithTopic } from '../../../features/Slice/newsSlice';
 
 const NewsWithTopic = () => {
+    //redux==
+    const dispatch = useDispatch();
+    const news = useSelector(state => state.news.newsOnTopic);
     const { topic } = useParams()
-    const [news, setNews] = useState()
     useEffect(() => {
-        fetch(`http://localhost:5000/news/${topic}`)
-            .then(res => res.json())
-            .then(data => setNews(data))
-    }, [topic])
+        dispatch(fetchNewsWithTopic(topic))
+    }, [dispatch, topic])
+    //===
     return (
         <div>
             <Container sx={{ marginBottom: '5rem' }}>

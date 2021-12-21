@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const initialState = {
   latestNews: [],
   singleNewsDetails: [],
+  newsOnTopic: [],
   readLater: [],
 };
 
@@ -19,6 +20,16 @@ export const fetchSingleNewsForDetails = createAsyncThunk(
   'news/fetchSingleNewsForDetails',
   async (id) => {
     const response = await fetch(`https://peaceful-river-87601.herokuapp.com/newsDetails/${id}`)
+      .then(res => res.json())
+    // The value we return becomes the `fulfilled` action payload
+    return response;
+
+  }
+);
+export const fetchNewsWithTopic = createAsyncThunk(
+  'news/fetchNewsWithTopic',
+  async (topic) => {
+    const response = await fetch(`http://localhost:5000/news/${topic}`)
       .then(res => res.json())
     // The value we return becomes the `fulfilled` action payload
     return response;
@@ -51,6 +62,9 @@ export const newsSlice = createSlice({
     })
     builder.addCase(fetchSingleNewsForDetails.fulfilled, (state, action) => {
       state.singleNewsDetails = action.payload;
+    })
+    builder.addCase(fetchNewsWithTopic.fulfilled, (state, action) => {
+      state.newsOnTopic = action.payload;
     })
   },
 });

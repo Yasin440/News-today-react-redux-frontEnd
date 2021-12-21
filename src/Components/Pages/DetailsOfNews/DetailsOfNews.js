@@ -19,20 +19,15 @@ const Img = styled('img')({
 
 const DetailsOfNews = () => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const { detailId } = useParams();
+    //redux===
+    const dispatch = useDispatch();
     const newsDetails = useSelector(state => state.news.singleNewsDetails);
     const { name, picture, picture2, category, details, date, by } = newsDetails;
     useEffect(() => {
         dispatch(fetchSingleNewsForDetails(detailId));
     })
-    //======
-    // const [newsDetails, setNewsDetails] = useState();
-    // useEffect(() => {
-    //     fetch(`https://peaceful-river-87601.herokuapp.com/newsDetails/${detailId}`)
-    //         .then(res => res.json())
-    //         .then(data => setNewsDetails(data))
-    // }, [detailId])
+    //===
     return (
         <div>
             {!newsDetails ?

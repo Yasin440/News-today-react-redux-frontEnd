@@ -9,7 +9,7 @@ const AddAdmin = () => {
     const { register, handleSubmit, reset } = useForm();
     const makeAdmin = data => {
         setAdminEmail(data.email);
-        fetch('https://nameless-river-31605.herokuapp.com/clients/makeAdmin', {
+        fetch('http://localhost:5000/user/makeAdmin', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

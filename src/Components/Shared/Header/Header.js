@@ -20,19 +20,16 @@ const Header = () => {
                                 <NavLink to='/home'>Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to=''>Covid-19</NavLink>
+                                <NavLink to='/news/Covid-19'>Covid-19</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to=''>Entertainment</NavLink>
+                                <NavLink to='/news/Entertainment'>Entertainment</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to=''>Travel</NavLink>
+                                <NavLink to='/news/Travel'>Travel</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to=''>Video</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink to=''>Business</NavLink>
+                                <NavLink to='/news/Business'>Business</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink to='/news/Sports'>Sports</NavLink>

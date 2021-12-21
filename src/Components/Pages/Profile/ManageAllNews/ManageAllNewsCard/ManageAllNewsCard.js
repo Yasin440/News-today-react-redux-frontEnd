@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
 import useAuth from '../../../../../Hooks/useAuth';
 
-const ManageCarCard = ({ car }) => {
+const ManageAllNewsCard = ({ car }) => {
     const { cars, setCars } = useAuth()
     const handleDelete = () => {
         const confirm = window.confirm("Are You Sure To DELETE This CarsOrder..?");
@@ -61,4 +61,4 @@ const ManageCarCard = ({ car }) => {
     );
 };
 
-export default ManageCarCard;
+export default ManageAllNewsCard;
