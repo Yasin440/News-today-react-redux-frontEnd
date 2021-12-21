@@ -16,6 +16,7 @@ import AddNews from './Components/Pages/Profile/AddNews/AddNews';
 import AddAdmin from './Components/Pages/Profile/AddAdmin/AddAdmin';
 import ManageAllCars from './Components/Pages/Profile/ManageAllCars/ManageAllCars';
 import Header from './Components/Shared/Header/Header';
+import NewsWithTopic from './Components/Pages/NewsWithTopic/NewsWithTopic';
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
             <Route path='manage_all_news' element={<PrivateAdminRoute><ManageAllCars /></PrivateAdminRoute>} />
           </Route>
           <Route path='/newsDetails/:detailId' element={<PrivateRoute><DetailsOfNews /></PrivateRoute>} />
+          <Route path='/news/:topic' element={<NewsWithTopic />} />
           <Route path='/signIn' element={<SignIn />} />
         </Routes>
       </BrowserRouter>

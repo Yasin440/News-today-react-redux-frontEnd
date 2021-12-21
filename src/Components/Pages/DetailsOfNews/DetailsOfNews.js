@@ -22,6 +22,7 @@ const DetailsOfNews = () => {
     const dispatch = useDispatch();
     const { detailId } = useParams();
     const newsDetails = useSelector(state => state.news.singleNewsDetails);
+    const { name, picture, picture2, category, details, date, by } = newsDetails;
     useEffect(() => {
         dispatch(fetchSingleNewsForDetails(detailId));
     })
@@ -40,30 +41,30 @@ const DetailsOfNews = () => {
                 </div>
                 :
                 <Container>
-                    <h2 className="title">{newsDetails.name.slice(0, 30)}...</h2>
+                    <h2 className="title">{name?.slice(0, 30)}...</h2>
                     <Grid container spacing={2}>
                         <Grid item>
                             <ButtonBase sx={{ width: 348, height: 260 }}>
-                                <Img alt="img" src={newsDetails.picture || `data:image/*;base64,${newsDetails.picture2}`} />
+                                <Img alt="img" src={picture || `data:image/*;base64,${picture2}`} />
                             </ButtonBase>
                         </Grid>
                         <Grid item xs={12} sm container>
                             <Grid item xs container direction="column" spacing={5}>
                                 <Grid item xs>
                                     <Typography variant="h5" component="div">
-                                        {newsDetails.name}
+                                        {name}
                                     </Typography>
                                     <Typography style={{ fontWeight: 'bold' }} variant="subtitle2." color="text.secondary">
-                                        Category: {newsDetails.category}
+                                        Category: {category}
                                     </Typography><br />
                                     <Typography style={{ fontWeight: 'bold' }} variant="subtitle2." color="text.secondary">
-                                        Publish On: {newsDetails.date}
+                                        Publish On: {date}
                                     </Typography><br />
                                     <Typography style={{ fontWeight: 'bold' }} variant="subtitle2." color="text.secondary">
-                                        Publish By: {newsDetails.by}
+                                        Publish By: {by}
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary">
-                                        {newsDetails.details}
+                                        {details}
                                     </Typography>
                                 </Grid>
                                 <Grid item>

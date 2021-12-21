@@ -35,7 +35,7 @@ const Header = () => {
                                 <NavLink to=''>Business</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to=''>Sports</NavLink>
+                                <NavLink to='/news/Sports'>Sports</NavLink>
                             </li>
                             {user &&
                                 <li className="nav-item">
@@ -54,8 +54,8 @@ const Header = () => {
                         </form>
                     </div>
                 </div>
-            </nav>
-        </div>
+            </nav >
+        </div >
     );
 };
 
