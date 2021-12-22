@@ -2,25 +2,24 @@ import React from 'react';
 import { CircularProgress, Container, Grid } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
-import useAuth from '../../../../Hooks/useAuth';
+import { useSelector } from 'react-redux';
 import ReadingListCard from './ReadingListCard';
 
 const MyReadingList = () => {
-    const { manageMyOrders } = useAuth();
-
+    const readLater = useSelector(state => state.news.readLater);
     return (
         <Container>
             <div data-aos="zoom-in">
                 <h2 className="title" style={{ marginTop: 0 }}>Your Saved News</h2>
             </div>
-            {!manageMyOrders ?
+            {!readLater ?
                 <div style={{ textAlign: 'center' }}>
                     <CircularProgress sx={{ my: 3 }} />
                 </div>
                 :
                 <>
                     {
-                        manageMyOrders.length === 0 ?
+                        readLater.length === 0 ?
                             <Alert severity="info">
                                 <AlertTitle>Please Reload after Saved</AlertTitle>
                                 <strong>There is no Saves News to Show! </strong>
@@ -28,10 +27,10 @@ const MyReadingList = () => {
                             :
                             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 4, md: 12 }}>
                                 {
-                                    manageMyOrders?.map(manageOrders =>
+                                    readLater?.map(news =>
                                         <ReadingListCard
-                                            key={manageOrders._id}
-                                            manageOrders={manageOrders}
+                                            key={news._id}
+                                            news={news}
                                         ></ReadingListCard>
                                     )
                                 }

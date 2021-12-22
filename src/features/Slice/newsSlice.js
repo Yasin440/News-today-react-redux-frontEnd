@@ -69,6 +69,7 @@ export const newsSlice = createSlice({
         }
       }
       state.readLater.push(action.payload);
+      alert('Added Successfully, Check Profile');
     },
     removeFromReadLater: (state, { payload }) => {
       state.readLater = state.readLater.filter(singleNews => singleNews._id !== payload)
