@@ -19,7 +19,6 @@ const drawerWidth = 200;
 
 const Profile = (props) => {
     const { user, logOut, admin } = useAuth();
-    console.log(admin);
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 

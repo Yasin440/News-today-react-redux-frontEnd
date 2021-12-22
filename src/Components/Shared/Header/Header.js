@@ -6,7 +6,6 @@ import useAuth from '../../../Hooks/useAuth';
 
 const Header = () => {
     const { user, logOut } = useAuth();
-    console.log(user);
     return (
         <div className="header">
             <nav className="navbar navbar-expand-lg">

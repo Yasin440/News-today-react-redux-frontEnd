@@ -15,7 +15,7 @@ const ManageAllNews = () => {
             <div data-aos="zoom-in">
                 <h2 className="title" style={{ marginTop: 0 }}>Manage All News</h2>
             </div>
-            {!allNews ?
+            {!allNews.length ?
                 <div style={{ textAlign: 'center' }}>
                     <CircularProgress sx={{ my: 3 }} />
                 </div>

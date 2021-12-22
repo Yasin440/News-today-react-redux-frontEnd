@@ -40,31 +40,31 @@ const AddNews = () => {
     }
     const currencies = [
         {
-            value: 'Covid-19',
+            value: '01',
             label: 'Covid-19',
         },
         {
-            value: 'Sports',
+            value: '02',
             label: 'Sports',
         },
         {
-            value: 'Travel',
+            value: '03',
             label: 'Travel',
         },
         {
-            value: 'Business',
+            value: '04',
             label: 'Business',
         },
         {
-            value: 'Entertainment',
+            value: '06',
             label: 'Entertainment',
         },
         {
-            value: 'Video',
+            value: '07',
             label: 'Video',
         },
         {
-            value: 'Others',
+            value: '08',
             label: 'Others',
         },
     ];

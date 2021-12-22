@@ -1,32 +1,57 @@
-import { CircularProgress, Container, Grid } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { CircularProgress, Container } from '@mui/material';
+import React, { useEffect } from 'react';
 import ReviewCard from './ReviewCard/ReviewCard';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAllReviews } from '../../../../features/Slice/newsSlice';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const Reviews = () => {
-    const [reviews, setReviews] = useState();
+    const dispatch = useDispatch();
+    const allReview = useSelector(state => state.news.allReview);
     useEffect(() => {
-        fetch('https://nameless-river-31605.herokuapp.com/reviews')
-            .then(res => res.json())
-            .then(data => setReviews(data))
-    }, [])
+        dispatch(fetchAllReviews());
+    }, [dispatch])
     return (
         <Container>
             <div data-aos="zoom-in">
                 <h2 className="title">OUR HAPPY USER</h2>
             </div>
-            {!reviews ?
+            {!allReview.length ?
                 <div style={{ textAlign: 'center' }}>
                     <CircularProgress sx={{ my: 3 }} />
                 </div>
                 :
-                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                <Swiper
+                    // install Swiper modules
+                    modules={[Navigation, Pagination, Scrollbar, A11y]}
+                    spaceBetween={20}
+                    slidesPerView={3}
+                    navigation
+                    pagination={{ clickable: true }}
+                    scrollbar={{ draggable: true }}
+                >
+
                     {
-                        reviews?.map(review => <ReviewCard
+                        allReview?.map(review => <SwiperSlide key={review._id}><ReviewCard
                             key={review._id}
                             review={review}
-                        ></ReviewCard>)
+                        ></ReviewCard></SwiperSlide>)
                     }
-                </Grid>
+                </Swiper>
+                // <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                //     {
+                //         allReview?.map(review => <ReviewCard
+                //             key={review._id}
+                //             review={review}
+                //         ></ReviewCard>)
+                //     }
+                // </Grid>
             }
         </Container>
 

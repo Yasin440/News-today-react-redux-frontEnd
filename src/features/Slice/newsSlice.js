@@ -6,12 +6,22 @@ const initialState = {
   singleNewsDetails: [],
   newsOnTopic: [],
   readLater: [],
+  allReview: [],
 };
 
 export const fetchLatestNews = createAsyncThunk(
   'news/fetchLatestNews',
   async () => {
     const response = await fetch('https://peaceful-river-87601.herokuapp.com/latestNews')
+      .then(res => res.json());
+    // The value we return becomes the `fulfilled` action payload
+    return response;
+  }
+);
+export const fetchAllReviews = createAsyncThunk(
+  'news/fetchAllReviews',
+  async () => {
+    const response = await fetch('http://localhost:5000/getAllReviews')
       .then(res => res.json());
     // The value we return becomes the `fulfilled` action payload
     return response;
@@ -78,6 +88,9 @@ export const newsSlice = createSlice({
     })
     builder.addCase(fetchNewsWithTopic.fulfilled, (state, action) => {
       state.newsOnTopic = action.payload;
+    })
+    builder.addCase(fetchAllReviews.fulfilled, (state, action) => {
+      state.allReview = action.payload;
     })
   },
 });

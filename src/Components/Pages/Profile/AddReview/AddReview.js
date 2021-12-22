@@ -1,4 +1,4 @@
-import { Container, Grid, Typography, TextField, Button, Alert } from '@mui/material';
+import { Container, Grid, Typography, TextField, Button, Alert, MenuItem } from '@mui/material';
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import useAuth from '../../../../Hooks/useAuth';
@@ -10,10 +10,10 @@ const style2 = {
 
 const AddReview = () => {
     const { user } = useAuth();
-    const [ratingSuccess, setRatingSuccess] = useState();
+    const [ratingSuccess, setRatingSuccess] = useState(false);
     const { register, handleSubmit, reset } = useForm();
     const addReview = data => {
-        fetch('https://nameless-river-31605.herokuapp.com/ratings', {
+        fetch('http://localhost:5000/ratings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -28,6 +28,28 @@ const AddReview = () => {
                 }
             })
     }
+    const currencies = [
+        {
+            value: '1',
+            label: '1',
+        },
+        {
+            value: '2',
+            label: '2',
+        },
+        {
+            value: '3',
+            label: '3',
+        },
+        {
+            value: '4',
+            label: '4',
+        },
+        {
+            value: '5',
+            label: '5',
+        }
+    ];
 
     return (
         <Container>
@@ -64,11 +86,17 @@ const AddReview = () => {
                             required
                             {...register("rating")}
                             id="standard-basic"
-                            label="Rating out of 5"
-                            type='number'
-                            variant="standard"
+                            select
                             sx={style2}
-                        />
+                            label="Rating out of 5"
+                            variant="standard"
+                        >
+                            {currencies.map((option) => (
+                                <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                </MenuItem>
+                            ))}
+                        </TextField>
                         <TextField
                             required
                             {...register("Comment")}

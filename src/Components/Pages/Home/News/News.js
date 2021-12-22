@@ -1,7 +1,7 @@
 import { CircularProgress, Container, Grid } from '@mui/material';
 import React, { useEffect } from 'react';
 import NewsCard from './NewsCard/NewsCard';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchLatestNews } from '../../../../features/Slice/newsSlice';
 
 const News = () => {
@@ -15,7 +15,7 @@ const News = () => {
             <div data-aos="zoom-in">
                 <h2 className="title">LATEST NEWS ON EARTH</h2>
             </div>
-            {!latestNews ?
+            {!latestNews.length ?
                 <div style={{ textAlign: 'center' }}>
                     <CircularProgress sx={{ my: 3 }} />
                 </div>
