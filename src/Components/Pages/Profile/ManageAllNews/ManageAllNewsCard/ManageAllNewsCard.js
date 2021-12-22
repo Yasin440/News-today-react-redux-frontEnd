@@ -11,7 +11,7 @@ const ManageAllNewsCard = ({ news, allNews }) => {
     const handleDelete = () => {
         const confirm = window.confirm("Are You Sure To DELETE This News..?");
         if (confirm) {
-            fetch(`http://localhost:5000/all_News/delete/${news._id}`, {
+            fetch(`https://peaceful-river-87601.herokuapp.com/all_News/delete/${news._id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())

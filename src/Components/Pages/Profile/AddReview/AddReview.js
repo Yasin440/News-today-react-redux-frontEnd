@@ -13,7 +13,7 @@ const AddReview = () => {
     const [ratingSuccess, setRatingSuccess] = useState(false);
     const { register, handleSubmit, reset } = useForm();
     const addReview = data => {
-        fetch('http://localhost:5000/ratings', {
+        fetch('https://peaceful-river-87601.herokuapp.com/ratings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -21,7 +21,7 @@ export const fetchLatestNews = createAsyncThunk(
 export const fetchAllReviews = createAsyncThunk(
   'news/fetchAllReviews',
   async () => {
-    const response = await fetch('http://localhost:5000/getAllReviews')
+    const response = await fetch('https://peaceful-river-87601.herokuapp.com/getAllReviews')
       .then(res => res.json());
     // The value we return becomes the `fulfilled` action payload
     return response;
@@ -30,7 +30,7 @@ export const fetchAllReviews = createAsyncThunk(
 export const fetchAllNews = createAsyncThunk(
   'news/fetchAllNews',
   async () => {
-    const response = await fetch('http://localhost:5000/allLatestNews')
+    const response = await fetch('https://peaceful-river-87601.herokuapp.com/allLatestNews')
       .then(res => res.json());
     // The value we return becomes the `fulfilled` action payload
     return response;
@@ -49,7 +49,7 @@ export const fetchSingleNewsForDetails = createAsyncThunk(
 export const fetchNewsWithTopic = createAsyncThunk(
   'news/fetchNewsWithTopic',
   async (topic) => {
-    const response = await fetch(`http://localhost:5000/news/${topic}`)
+    const response = await fetch(`https://peaceful-river-87601.herokuapp.com/news/${topic}`)
       .then(res => res.json())
     // The value we return becomes the `fulfilled` action payload
     return response;
