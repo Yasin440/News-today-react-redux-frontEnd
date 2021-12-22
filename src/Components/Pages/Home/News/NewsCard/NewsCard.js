@@ -10,9 +10,11 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import SaveIcon from '@mui/icons-material/Save';
 import { addToReadLater } from '../../../../../features/Slice/newsSlice';
 import { useDispatch } from 'react-redux'
+import useAuth from '../../../../../Hooks/useAuth';
 
 
 const NewsCard = ({ news }) => {
+    const { user } = useAuth();
     const dispatch = useDispatch();
     return (
         <Grid item xs={4} sm={4} md={4}>
@@ -42,7 +44,10 @@ const NewsCard = ({ news }) => {
                         style={{ textDecoration: 'none' }}
                         to={`/newsDetails/${news._id}`}><Button sx={{ fontWeight: 'bold' }} variant="outlined"><VisibilityIcon sx={{ marginRight: '8px' }} /> Read</Button>
                     </Link>
-                    <span onClick={() => dispatch(addToReadLater(news))} className="read-later" title='Read later'><SaveIcon /></span>
+                    {
+                        user.email &&
+                        <span onClick={() => dispatch(addToReadLater(news))} className="read-later" title='Read later'><SaveIcon /></span>
+                    }
                 </CardActions>
             </Card>
         </Grid>
