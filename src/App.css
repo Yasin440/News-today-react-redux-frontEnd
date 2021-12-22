@@ -31,3 +31,8 @@
 	background: linear-gradient(90deg, #4C489D, #7E7BB9);
 	align-items: center;
 }
+@media screen and (max-width:576px){
+    .swiper-slide{
+        width:100%;
+    }
+}
