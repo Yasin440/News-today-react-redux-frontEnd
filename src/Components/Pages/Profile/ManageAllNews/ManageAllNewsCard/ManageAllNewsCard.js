@@ -6,22 +6,20 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
-import useAuth from '../../../../../Hooks/useAuth';
 
-const ManageAllNewsCard = ({ news }) => {
-    const { cars, setCars } = useAuth()
+const ManageAllNewsCard = ({ news, allNews }) => {
     const handleDelete = () => {
-        const confirm = window.confirm("Are You Sure To DELETE This CarsOrder..?");
+        const confirm = window.confirm("Are You Sure To DELETE This News..?");
         if (confirm) {
-            fetch(`https://nameless-river-31605.herokuapp.com/all_Cars/delete/${news._id}`, {
+            fetch(`http://localhost:5000/all_News/delete/${news._id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
                         alert("DELETE Successfully");
-                        const remain = cars.filter(data => data._id !== news._id);
-                        setCars(remain);
+                        const remain = allNews.filter(data => data._id !== news._id);
+                        allNews = remain;
                     }
                 })
         }

@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { CircularProgress, Container, Grid } from '@mui/material';
 import ManageAllNewsCard from './ManageAllNewsCard/ManageAllNewsCard';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchAllNews } from '../../../../features/Slice/newsSlice';
 
 const ManageAllNews = () => {
     const dispatch = useDispatch();
-    const allNews = useSelector(state => state.news.allNews);
+    let allNews = useSelector(state => state.news.allNews);
     useEffect(() => {
         dispatch(fetchAllNews());
-    }, [dispatch])
+    }, [dispatch, allNews])
     return (
         <Container>
             <div data-aos="zoom-in">
@@ -26,6 +26,7 @@ const ManageAllNews = () => {
                             <ManageAllNewsCard
                                 key={news._id}
                                 news={news}
+                                allNews={allNews}
                             ></ManageAllNewsCard>
                         )
                     }
