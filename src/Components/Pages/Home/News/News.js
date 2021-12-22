@@ -9,7 +9,7 @@ const News = () => {
     const latestNews = useSelector(state => state.news.latestNews);
     useEffect(() => {
         dispatch(fetchLatestNews());
-    }, [dispatch])
+    }, [dispatch, latestNews])
     return (
         <Container sx={{ marginBottom: '5rem' }}>
             <div data-aos="zoom-in">

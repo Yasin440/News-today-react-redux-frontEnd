@@ -20,7 +20,7 @@ const NewsWithTopic = () => {
                 <div data-aos="zoom-in">
                     <h2 className="title">Latent News On {topic}</h2>
                 </div>
-                {!dispatch ?
+                {!news ?
                     <div style={{ textAlign: 'center' }}>
                         <CircularProgress sx={{ my: 3 }} />
                     </div>

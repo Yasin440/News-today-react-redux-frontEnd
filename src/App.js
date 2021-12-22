@@ -38,7 +38,7 @@ function App() {
             <Route index element={<MyReadingList />} />
             <Route path='my_order' element={<MyReadingList />} />
             <Route path='profile_makeReview' element={<AddReview />} />
-            <Route path='addLatestNews' element={<PrivateAdminRoute><AddNews /></PrivateAdminRoute>} />
+            <Route path='addLatestNews' element={<PrivateRoute><AddNews /></PrivateRoute>} />
             <Route path='add_admin' element={<PrivateAdminRoute><AddAdmin /></PrivateAdminRoute>} />
             <Route path='manage_all_news' element={<PrivateAdminRoute><ManageAllNews /></PrivateAdminRoute>} />
           </Route>

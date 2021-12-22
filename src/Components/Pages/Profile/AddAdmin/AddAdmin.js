@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import { useForm } from "react-hook-form";
 import { Alert, Button } from '@mui/material';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAllAdmin } from '../../../../features/Slice/newsSlice';
 
 const AddAdmin = () => {
+    const dispatch = useDispatch();
+    const allAdmin = useSelector(state => state.news.allAdmin);
+    useEffect(() => {
+        dispatch(fetchAllAdmin());
+    }, [dispatch, allAdmin])
     const [adminSuccess, setAdminSuccess] = useState(false);
     const [adminEmail, setAdminEmail] = useState(false);
     const { register, handleSubmit, reset } = useForm();
@@ -44,6 +51,18 @@ const AddAdmin = () => {
                 />
                 <Button type='submit' sx={{ width: 'fitContent', textAlign: 'center', fontWeight: 'bold', margin: '20px auto', display: 'block' }} variant="outlined">Make Admin</Button>
             </form>
+            <div>
+                <div data-aos="zoom-in">
+                    <h2 className="title" style={{ marginTop: '5rem', marginBottom: '3rem' }}>All admin</h2>
+                </div>
+                <div style={{ textAlign: 'center' }}>
+                    {
+                        allAdmin.map(admin =>
+                            <p key={admin._id}>{admin.email} -- {admin.role}</p>
+                        )
+                    }
+                </div>
+            </div>
         </div>
     );
 };

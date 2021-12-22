@@ -41,7 +41,7 @@ const Profile = (props) => {
                 <Link to='/profile/my_order' style={{ textDecoration: 'none' }}>
                     <ListItem disablePadding>
                         <ListItemButton>
-                            <ListItemText primary="My Order" />
+                            <ListItemText primary="Saved News" />
                         </ListItemButton>
                     </ListItem>
                 </Link>
@@ -61,16 +61,16 @@ const Profile = (props) => {
                                 </ListItemButton>
                             </ListItem>
                         </Link>
-                        <Link to='/profile/addLatestNews' style={{ textDecoration: 'none' }}>
-                            <ListItem disablePadding>
-                                <ListItemButton>
-                                    <ListItemText primary="Add Latest News" />
-                                </ListItemButton>
-                            </ListItem>
-                        </Link>
                     </>
                 }
 
+                <Link to='/profile/addLatestNews' style={{ textDecoration: 'none' }}>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemText primary="Add Latest News" />
+                        </ListItemButton>
+                    </ListItem>
+                </Link>
                 <Link to='/profile/profile_makeReview' style={{ textDecoration: 'none' }}>
                     <ListItem disablePadding>
                         <ListItemButton>

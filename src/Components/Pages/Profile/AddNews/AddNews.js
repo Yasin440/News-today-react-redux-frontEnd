@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import { useForm } from "react-hook-form";
 import useAuth from '../../../../Hooks/useAuth';
 import Typography from '@mui/material/Typography';
-import { Alert, Button } from '@mui/material';
+import { Alert, Button, CircularProgress } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 
 const style2 = {
@@ -14,10 +14,11 @@ const style2 = {
 const AddNews = () => {
     const { user } = useAuth();
     const { register, handleSubmit, reset } = useForm();
-    const [success, setSuccess] = useState(false);
+    const [success, setSuccess] = useState();
     const [img, setImg] = useState(null);
     //add new car to cars in database
     const addNewNews = data => {
+        setSuccess(false);
         const formData = new FormData();
         formData.append('picture', img);
         formData.append('by', data.clientName);
@@ -40,31 +41,31 @@ const AddNews = () => {
     }
     const currencies = [
         {
-            value: '01',
+            value: 'Covid-19',
             label: 'Covid-19',
         },
         {
-            value: '02',
+            value: 'Sports',
             label: 'Sports',
         },
         {
-            value: '03',
+            value: 'Travel',
             label: 'Travel',
         },
         {
-            value: '04',
+            value: 'Business',
             label: 'Business',
         },
         {
-            value: '06',
+            value: 'Entertainment',
             label: 'Entertainment',
         },
         {
-            value: '07',
+            value: 'Video',
             label: 'Video',
         },
         {
-            value: '08',
+            value: 'Others',
             label: 'Others',
         },
     ];
@@ -154,18 +155,33 @@ const AddNews = () => {
                     {success &&
                         <Alert className='w-50 m-auto' severity="success">**{user.displayName} Successfully Add a Latest News as Admin</Alert>
                     }
-                    <Button
-                        data-aos="slide-up"
-                        type='submit'
-                        sx={{
-                            width: 'fitContent',
-                            textAlign: 'center',
-                            fontWeight: 'bold',
-                            margin: '3rem auto',
-                            display: 'block'
-                        }}
-                        variant="outlined">Add News
-                    </Button>
+                    {!success ?
+                        <Button
+                            data-aos="slide-up"
+                            sx={{
+                                width: 'fitContent',
+                                textAlign: 'center',
+                                fontWeight: 'bold',
+                                margin: '3rem auto',
+                                display: 'block'
+                            }}
+                            variant="outlined"><CircularProgress />
+                        </Button>
+                        :
+                        <Button
+                            data-aos="slide-up"
+                            type='submit'
+                            sx={{
+                                width: 'fitContent',
+                                textAlign: 'center',
+                                fontWeight: 'bold',
+                                margin: '3rem auto',
+                                display: 'block'
+                            }}
+                            variant="outlined">Add News
+                        </Button>
+                    }
+
                 </form>
             </div>
 

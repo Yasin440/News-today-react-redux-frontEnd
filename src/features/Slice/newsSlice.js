@@ -7,6 +7,7 @@ const initialState = {
   newsOnTopic: [],
   readLater: [],
   allReview: [],
+  allAdmin: [],
 };
 
 export const fetchLatestNews = createAsyncThunk(
@@ -56,6 +57,16 @@ export const fetchNewsWithTopic = createAsyncThunk(
 
   }
 );
+export const fetchAllAdmin = createAsyncThunk(
+  'news/fetchAllAdmin',
+  async () => {
+    const response = await fetch('https://peaceful-river-87601.herokuapp.com/users/adminList')
+      .then(res => res.json())
+    // The value we return becomes the `fulfilled` action payload
+    return response;
+
+  }
+);
 
 export const newsSlice = createSlice({
   name: 'news',
@@ -92,6 +103,9 @@ export const newsSlice = createSlice({
     })
     builder.addCase(fetchAllReviews.fulfilled, (state, action) => {
       state.allReview = action.payload;
+    })
+    builder.addCase(fetchAllAdmin.fulfilled, (state, action) => {
+      state.allAdmin = action.payload;
     })
   },
 });

@@ -34,6 +34,9 @@ const Header = () => {
                             <li className="nav-item">
                                 <NavLink to='/news/Sports'>Sports</NavLink>
                             </li>
+                            <li className="nav-item">
+                                <NavLink to='/news/Others'>Others</NavLink>
+                            </li>
                             {user.email &&
                                 <li className="nav-item">
                                     <NavLink to='/profile'>Profile</NavLink>
