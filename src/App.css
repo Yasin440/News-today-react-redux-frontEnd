@@ -32,7 +32,7 @@
 	align-items: center;
 }
 @media screen and (max-width:576px){
-    .swipe .swiper-slide {
+    .swiper .swiper-slide {
         width: 100% !important;
     }
 }
